@@ -25,7 +25,7 @@ export default function RouletteModal({ onClose }) {
     (ug) => (!platform || ug.platform === platform) && (!genre || ug.game?.genres?.includes(genre)),
   );
 
-  // Несколько раз быстро меняем игру, чтобы было похоже на вращение, потом останавливаемся
+  // Несколько раз быстро меняем игру, чтобы было похоже на вращение, потом делаем стоп
   function spin() {
     if (pool.length === 0) return;
     setSpinning(true);

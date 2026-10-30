@@ -11,7 +11,7 @@ import { formatDate, formatShortDate } from '../utils/date';
 
 const MAX_FAVORITES = 5;
 
-// Из записи библиотеки делаем значения для полей формы (числа храним строками, как в input)
+// Из записи библиотеки делаем значения для полей формы
 function toForm(ug) {
   return {
     status: ug.status,

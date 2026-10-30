@@ -1,5 +1,5 @@
-// Достижения считаются «на лету» из библиотеки, отдельная таблица не нужна.
-// Чтобы добавить новое достижение, достаточно дописать объект в массив rules.
+// Достижения считаются «на лету» из библиотеки
+// достаточно дописать объект в массив rules.
 
 import { Footprints, Trophy, Swords, Timer, Library, Star, PiggyBank, Flame } from 'lucide-react';
 import { costPerHour } from './stats';

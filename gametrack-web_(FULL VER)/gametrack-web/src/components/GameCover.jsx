@@ -5,12 +5,12 @@ import { catalogCovers } from '../data/catalog';
 const shades = ['bg-neutral-900', 'bg-neutral-800', 'bg-neutral-700', 'bg-stone-800', 'bg-zinc-800'];
 
 // Обложка игры. Пробуем картинки по очереди: сохранённую в базе, постер из Steam, шапку из Steam.
-// Если не загрузилась ни одна — показываем аккуратную заглушку с названием.
+// Если не загрузилась ни одна — заглушка.
 export default function GameCover({ game, className = '', small = false }) {
   const sources = [...new Set([game?.cover_url, ...catalogCovers(game?.id)].filter(Boolean))];
   const [index, setIndex] = useState(0);
 
-  // при смене игры (например, в рулетке) начинаем перебор заново
+  // при смене игры начинаем перебор заново
   useEffect(() => setIndex(0), [game?.id]);
 
   if (index < sources.length) {

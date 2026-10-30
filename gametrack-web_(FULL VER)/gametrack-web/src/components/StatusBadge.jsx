@@ -1,6 +1,6 @@
 import { STATUSES } from '../utils/constants';
 
-// В монохроме статусы различаем заливкой и обводкой, а не цветом
+// В монохроме статусы различаем заливкой и обводкой
 const styles = {
   playing: 'bg-black text-white border-black',
   backlog: 'bg-white text-neutral-700 border-neutral-300',

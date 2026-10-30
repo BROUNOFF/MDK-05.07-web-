@@ -1,9 +1,7 @@
 // Локальная «база данных» в localStorage браузера.
 // Нужна, чтобы приложение работало без интернета и без настройки Supabase.
-// Функции повторяют supabaseDb.js один в один, поэтому страницы не знают, откуда данные.
 //
-// Важно: пароль здесь хранится открытым текстом — это только заглушка для демо.
-// В Supabase пароли хранятся в виде хэша и сюда не попадают.
+// В Supabase пароли хранятся в виде хэша и сюда не попадают, иначе они хранятся здесь.
 
 import { demoLibrary, demoGoal, makeDemoSessions } from '../data/demoData';
 import { toLocalDate } from '../utils/date';
@@ -34,7 +32,7 @@ function save(db) {
   localStorage.setItem(KEY, JSON.stringify(db));
 }
 
-// При первом запуске создаём демо-аккаунт с заполненной библиотекой
+// При первом запуске создаём демо-аккаунт
 function seedDemoUser(db) {
   const user = {
     id: uid(),
@@ -79,7 +77,7 @@ function requireUser(db) {
   return user;
 }
 
-// К записи коллекции подклеиваем данные игры — так же, как делает select('*, game:games(*)')
+// К записи коллекции подклеиваем данные игры
 function withGame(db, ug) {
   return { ...ug, game: db.games[ug.game_id] };
 }
@@ -145,7 +143,7 @@ export async function addToLibrary(game, fields) {
   if (db.userGames.some((ug) => ug.user_id === user.id && ug.game_id === game.id)) {
     throw new Error('Эта игра уже есть в библиотеке');
   }
-  // кэшируем справочные данные игры, чтобы не ходить за ними во внешний API повторно
+  // кэшируем справочные данные игры
   db.games[game.id] = game;
 
   const now = new Date().toISOString();
@@ -188,7 +186,7 @@ export async function removeFromLibrary(id) {
   save(db);
 }
 
-// Игровые сессии (для карты активности)
+// Игровые сессии 
 
 export async function getSessions() {
   const db = load();

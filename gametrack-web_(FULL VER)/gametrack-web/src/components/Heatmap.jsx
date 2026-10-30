@@ -11,12 +11,12 @@ function shade(hours) {
   return 'bg-black';
 }
 
-// Карта активности как на GitHub: колонки — недели, строки — дни недели
+// Карта активности
 export default function Heatmap({ sessions }) {
   const hoursByDay = {};
   for (const s of sessions) hoursByDay[s.played_on] = (hoursByDay[s.played_on] || 0) + s.hours;
 
-  // Начинаем с понедельника, который был WEEKS недель назад
+  // Начинаем с понедельника, который был weeks недель назад
   const today = new Date();
   const start = new Date(today);
   const weekday = (today.getDay() + 6) % 7; // 0 = понедельник

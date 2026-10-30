@@ -1,4 +1,4 @@
-// Расчёты из раздела «Требования к математическому обеспечению» ТЗ
+// Сделать я просто скопировал с ТЗ данные о том как считаются переменные
 
 // Стоимость часа развлечения: C = P / H
 export function costPerHour(price, hours) {
@@ -21,10 +21,10 @@ export function completedInYear(library, year) {
 
 export function totalHours(library) {
   return library.reduce((sum, ug) => sum + (ug.playtime_hours || 0), 0);
-}
+} 
 
 // Доля жанра: D = H_жанра / H_всего * 100.
-// Часы игры делим поровну между её жанрами, чтобы сумма долей была 100%.
+// Часы игры делим поровну между её жанрами
 export function genreShare(library) {
   const hoursByGenre = {};
   let total = 0;

@@ -4,7 +4,7 @@ import GameCover from './GameCover';
 import { useLibrary } from '../context/LibraryContext';
 import { STATUSES, STATUS_KEYS, PLATFORMS } from '../utils/constants';
 
-// Окно добавления игры: выбираем статус и платформу, на которой будем играть
+// Окно добавления игры
 export default function AddGameModal({ game, onClose }) {
   const { addGame } = useLibrary();
   const available = game.platforms?.length ? game.platforms : PLATFORMS;

@@ -8,7 +8,7 @@ export default function Login() {
   const { user, signIn, signUp } = useAuth();
   const navigate = useNavigate();
 
-  const [mode, setMode] = useState('login'); // login | register
+  const [mode, setMode] = useState('login'); // login или register
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

@@ -5,7 +5,7 @@ import Heatmap from '../components/Heatmap';
 import { genreShare, platformShare, costPerHour } from '../utils/stats';
 import { getAchievements } from '../utils/achievements';
 
-// Горизонтальные полоски вместо круговой диаграммы: в чёрно-белом стиле они читаются лучше
+// Горизонтальные полоски вместо круговой диаграммы в чёрно-белом стиле
 function BarList({ items, limit = 6 }) {
   if (items.length === 0) return <p className="text-sm text-neutral-500">Пока нет наигранных часов.</p>;
 

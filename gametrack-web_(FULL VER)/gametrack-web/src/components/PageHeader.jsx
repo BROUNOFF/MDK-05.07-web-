@@ -1,4 +1,4 @@
-// Заголовок страницы: такой же, как был в MVP (крупный текст, подпись и линия снизу)
+// Заголовок страницы
 export default function PageHeader({ title, subtitle, children }) {
   return (
     <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 border-b border-neutral-200 pb-5">

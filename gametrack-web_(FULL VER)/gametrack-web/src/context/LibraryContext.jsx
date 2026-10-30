@@ -33,7 +33,7 @@ export function LibraryProvider({ children }) {
     }
   }, [user, year, showToast]);
 
-  // данные загружаются заново при каждом входе в аккаунт
+  // данные загружаются заново при каждом входе
   useEffect(() => {
     if (user) reload();
     else {
@@ -87,7 +87,7 @@ export function LibraryProvider({ children }) {
     }, `«${item.game.title}» удалена из библиотеки`);
   }
 
-  // Кнопки +1 ч / -1 ч: меняем общее время и записываем сессию для карты активности
+  // меняем общее время и записываем сессию для карты активности
   function changeHours(item, delta) {
     const hours = Math.max(0, (item.playtime_hours || 0) + delta);
     if (hours === item.playtime_hours) return null;
@@ -109,7 +109,7 @@ export function LibraryProvider({ children }) {
     }, 'Цель на год обновлена');
   }
 
-  // Заполнить пустой аккаунт демо-играми (удобно для показа с Supabase)
+  // Заполнить пустой аккаунт демо-играми
   function importDemo() {
     return run(async () => {
       const added = [];

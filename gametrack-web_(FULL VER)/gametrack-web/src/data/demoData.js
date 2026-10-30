@@ -1,4 +1,4 @@
-// Демо-библиотека: чтобы на защите все экраны сразу были заполнены.
+// Демо-библиотека
 // Даты считаются от текущего дня, поэтому карта активности всегда «живая».
 
 import { catalog } from './catalog';
@@ -12,7 +12,7 @@ export function daysAgo(n) {
   return d.toISOString();
 }
 
-// [название, статус, платформа, оценка, цена, часы, пройдено N дней назад, в избранном]
+// название, статус, платформа, оценка, цена, часы, пройдено N дней назад, в избранном
 const rows = [
   ['The Witcher 3: Wild Hunt', 'completed', 'PC', 10, 1199, 120, 230, true],
   ['Cyberpunk 2077', 'playing', 'PC', 8, 1999, 45, null, false],
@@ -43,7 +43,7 @@ export const demoLibrary = rows.map(([title, status, platform, rating, price, ho
 
 export const demoGoal = 12;
 
-// Простой генератор псевдослучайных чисел, чтобы сессии были одинаковыми при каждом запуске
+// Простой генератор псевдослучайных чисел
 function seeded(seed) {
   let s = seed;
   return () => {

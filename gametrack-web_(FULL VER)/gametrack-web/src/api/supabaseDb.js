@@ -1,4 +1,4 @@
-// Работа с облачной базой Supabase (PostgreSQL).
+// Работа с облачной базой Supabase.
 // Включается автоматически, если в файле .env заполнены VITE_SUPABASE_URL и VITE_SUPABASE_KEY.
 // Таблицы и права доступа создаются скриптом supabase/schema.sql.
 
@@ -10,7 +10,7 @@ const key = import.meta.env.VITE_SUPABASE_KEY;
 
 export const supabase = url && key ? createClient(url, key) : null;
 
-// Ошибки Supabase приходят на английском — переводим самые частые
+// Ошибки переводим самые частые
 function check(error) {
   if (!error) return;
   const msg = error.message || '';
@@ -27,7 +27,7 @@ function mapUser(u) {
   return { id: u.id, email: u.email, name: u.user_metadata?.name || u.email, created_at: u.created_at };
 }
 
-// numeric из PostgreSQL на всякий случай приводим к числу
+// numeric из PostgreSQL приводим к числу
 function normalize(ug) {
   return {
     ...ug,
@@ -127,7 +127,7 @@ export async function updateUserGame(id, patch) {
 }
 
 export async function removeFromLibrary(id) {
-  // сессии этой игры удалятся каскадом (on delete cascade)
+  // это on delete cascade
   const { error } = await supabase.from('user_games').delete().eq('id', id);
   check(error);
 }

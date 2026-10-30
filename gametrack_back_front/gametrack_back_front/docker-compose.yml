@@ -1,0 +1,42 @@
+# Весь проект одной командой: docker compose up --build
+# Сайт: http://localhost:8080   API: http://localhost:3000/api/health   База: localhost:5432
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: gametrack
+      POSTGRES_PASSWORD: gametrack
+      POSTGRES_DB: gametrack
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data # данные базы сохраняются между перезапусками
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U gametrack -d gametrack"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  backend:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgres://gametrack:gametrack@db:5432/gametrack
+      JWT_SECRET: gametrack-docker-secret
+      PORT: 3000
+      RAWG_KEY: ${RAWG_KEY:-}
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:

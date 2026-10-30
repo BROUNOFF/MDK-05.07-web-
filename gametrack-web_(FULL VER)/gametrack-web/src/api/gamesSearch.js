@@ -1,5 +1,5 @@
 // Поиск игр в справочнике.
-// С ключом RAWG ищем по настоящей базе rawg.io (там 500 000+ игр с обложками),
+// С ключом RAWG ищем по настоящей базе rawg.io,
 // без ключа — по встроенному списку из data/catalog.js.
 
 import { catalog } from '../data/catalog';
@@ -8,7 +8,7 @@ const RAWG_KEY = import.meta.env.VITE_RAWG_KEY;
 
 export const isRawg = Boolean(RAWG_KEY);
 
-// Названия платформ в RAWG длинные, приводим к нашим коротким
+// Названия приводим к нашим коротким
 function mapPlatform(name) {
   if (name === 'PC') return 'PC';
   if (name === 'PlayStation 5') return 'PS5';

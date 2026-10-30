@@ -2,7 +2,7 @@ import { Sparkles } from 'lucide-react';
 import { genreShare } from '../utils/stats';
 import { longestStreak } from '../utils/achievements';
 
-// «Итоги года»: короткая сводка за текущий календарный год
+// «Итоги года»:
 export default function YearSummary({ library, sessions, year }) {
   const yearSessions = sessions.filter((s) => s.played_on.startsWith(String(year)) && s.hours > 0);
   const hours = yearSessions.reduce((sum, s) => sum + s.hours, 0);
